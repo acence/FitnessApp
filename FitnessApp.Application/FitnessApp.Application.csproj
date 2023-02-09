@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FitnessApp.Database.Interfaces\FitnessApp.Database.Interfaces.csproj" />
+    <ProjectReference Include="..\FitnessApp.Domain\FitnessApp.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

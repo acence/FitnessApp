@@ -1,8 +1,7 @@
 ﻿using FitnessApp.Database.Interfaces;
 using FitnessApp.Domain.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq.Expressions;
 
 namespace FitnessApp.Database.Base
@@ -11,7 +10,7 @@ namespace FitnessApp.Database.Base
     {
         public readonly IDatabaseContext _context;
         private readonly ILogger<BaseRepository<T>> _logger;
-        private IDbSet<T>? _entities;
+        private DbSet<T>? _entities;
 
         public BaseRepository(IDatabaseContext context, ILogger<BaseRepository<T>> logger)
         {
@@ -19,7 +18,7 @@ namespace FitnessApp.Database.Base
             _logger = logger;
         }
 
-        protected virtual IDbSet<T> Entities
+        protected virtual DbSet<T> Entities
         {
             get
             {
@@ -40,16 +39,8 @@ namespace FitnessApp.Database.Base
                 throw new ArgumentNullException();
 
             (_context as DbContext)!.Entry(entity).State = EntityState.Added;
-
-            try
-            {
-                return await _context.SaveChangesAsync();
-            }
-            catch (DbEntityValidationException e)
-            {
-                LogValidationException(e);
-                throw;
-            }
+            
+            return await _context.SaveChangesAsync();
         }
 
         public virtual async Task<Int32> Update(T entity)
@@ -58,15 +49,7 @@ namespace FitnessApp.Database.Base
                 throw new ArgumentNullException();
             (_context as DbContext)!.Entry(entity).State = EntityState.Modified;
 
-            try
-            {
-                return await _context.SaveChangesAsync();
-            }
-            catch (DbEntityValidationException e)
-            {
-                LogValidationException(e);
-                throw;
-            }
+            return await _context.SaveChangesAsync();
         }
 
         public virtual async Task<Int32> InsertOrUpdate(Expression<Func<T, bool>> comparer, T entity)
@@ -88,18 +71,6 @@ namespace FitnessApp.Database.Base
 
             Entities.Remove(entity);
             return await _context.SaveChangesAsync();
-        }
-
-        private void LogValidationException(DbEntityValidationException e)
-        {
-            foreach (var eve in e.EntityValidationErrors)
-            {
-                _logger.LogError("Entity of type {EntityType} in state {State} has the following validation errors:", eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                foreach (var ve in eve.ValidationErrors)
-                {
-                    _logger.LogError("- Property: {PropertyName}, Error: {ErrorMessage}", ve.PropertyName, ve.ErrorMessage);
-                }
-            }
         }
     }
 }
