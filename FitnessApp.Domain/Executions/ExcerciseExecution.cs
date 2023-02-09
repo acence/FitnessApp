@@ -2,16 +2,16 @@
 
 namespace FitnessApp.Domain.Executions
 {
-    public class ExcerciseExecution : BaseObject
+    public class ExcerciseExecution : BaseModel
     {
         #region Foreign keys
-        public int WorkoutDayId { get; set; }
-        public int ExcerciseId { get; set; }
+        public Int32 WorkoutDayId { get; set; }
+        public Int32 ExcerciseId { get; set; }
         #endregion
 
-        public int Series { get; set; }
-        public int Repetitions { get; set; }
-        public int Weight { get; set; }
+        public Int32 Series { get; set; }
+        public Int32 Repetitions { get; set; }
+        public Int32 Weight { get; set; }
 
         #region Parents
         public WorkoutDayExecution WorkoutDay { get; set; } = null!;

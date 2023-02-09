@@ -2,10 +2,10 @@
 
 namespace FitnessApp.Domain.Authentication
 {
-    public class User : BaseObject
+    public class User : BaseModel
     {
-        public string Name { get; set; } = null!;
-        public string Email { get; set; } = null!;
-        public string Password { get; set; } = null!;
+        public String Name { get; set; } = null!;
+        public String Email { get; set; } = null!;
+        public String Password { get; set; } = null!;
     }
 }

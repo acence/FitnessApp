@@ -2,10 +2,10 @@
 
 namespace FitnessApp.Domain.Executions
 {
-    public class WorkoutDayExecution : BaseObject
+    public class WorkoutDayExecution : BaseModel
     {
         #region Foreign keys
-        public int WorkoutDayId { get; set; }
+        public Int32 WorkoutDayId { get; set; }
         #endregion
 
         public DateTimeOffset Date { get; set; }

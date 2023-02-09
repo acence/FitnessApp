@@ -2,11 +2,11 @@
 
 namespace FitnessApp.Domain
 {
-    public class BodyPart : BaseObject
+    public class BodyPart : BaseModel
     {
-        public string Name { get; set; } = null!;
-        public string Description { get; set; } = null!;
-        public string Image { get; set; } = null!;
+        public String Name { get; set; } = null!;
+        public String Description { get; set; } = null!;
+        public String Image { get; set; } = null!;
         public Intensity Intensity { get; set; }
 
         #region Connections

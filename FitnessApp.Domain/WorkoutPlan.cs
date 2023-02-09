@@ -3,12 +3,12 @@ using FitnessApp.Domain.Base;
 
 namespace FitnessApp.Domain
 {
-    public class WorkoutPlan : BaseObject
+    public class WorkoutPlan : BaseModel
     {
         #region Foreign keys
-        public int UserId { get; set; }
+        public Int32 UserId { get; set; }
         #endregion
-        public string Name { get; set; } = null!;
+        public String Name { get; set; } = null!;
 
         #region Children
         public ICollection<WorkoutDay> WorkoutDays { get; set; } = new List<WorkoutDay>();

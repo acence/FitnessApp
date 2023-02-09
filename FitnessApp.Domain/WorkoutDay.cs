@@ -3,10 +3,10 @@ using FitnessApp.Domain.Executions;
 
 namespace FitnessApp.Domain
 {
-    public class WorkoutDay : BaseObject
+    public class WorkoutDay : BaseModel
     {
         #region Foreign keys
-        public int WorkoutPlanId { get; set; }
+        public Int32 WorkoutPlanId { get; set; }
         #endregion
 
         public DayOfWeek DayOfWeek { get; set; }
