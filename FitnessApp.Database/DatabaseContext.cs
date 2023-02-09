@@ -19,14 +19,8 @@ namespace FitnessApp.Database
         #region Overrides 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var typesToRegister = Assembly.GetExecutingAssembly().GetTypes().Where(type => !String.IsNullOrEmpty(type.Namespace)).Where(type => type.BaseType != null && type.BaseType.IsGenericType && type.BaseType.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>));
-            foreach (var type in typesToRegister)
-            {
-                dynamic configurationInstance = Activator.CreateInstance(type)!;
-				modelBuilder.ApplyConfiguration(configurationInstance);
-            }
-
-            base.OnModelCreating(modelBuilder);
+			modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+			base.OnModelCreating(modelBuilder);
         }
 
         #endregion Overrides

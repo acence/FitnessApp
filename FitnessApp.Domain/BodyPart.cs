@@ -10,7 +10,7 @@ namespace FitnessApp.Domain
         public Intensity Intensity { get; set; }
 
         #region Connections
-        public ICollection<Excercise> Excercises { get; set; } = new List<Excercise>();
+        public virtual ICollection<Excercise> Excercises { get; set; } = new List<Excercise>();
         #endregion
     }
     public enum Intensity
