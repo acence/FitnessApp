@@ -1,6 +1,6 @@
 using FitnessApp.Core.Application.Configuration;
-using FitnessApp.Infrastructure.Database.Configuration;
 using FitnessApp.Web.Api.Configuration.Swagger;
+using FitnessApp.IoC.Web.Api;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +11,8 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 {
 	options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
-builder.Services.AddDatabaseServices(builder.Configuration);
 
+builder.Services.AddWebApiDependencies(builder.Configuration);
 builder.Services.AddMediatorServices().AddValidators();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

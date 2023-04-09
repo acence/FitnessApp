@@ -21,7 +21,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FitnessApp.Core.Application\FitnessApp.Core.Application.csproj" />
-    <ProjectReference Include="..\FitnessApp.Infrastructure.Database\FitnessApp.Infrastructure.Database.csproj" />
+    <ProjectReference Include="..\FitnessApp.Domain\FitnessApp.Domain.csproj" />
+    <ProjectReference Include="..\FitnessApp.IoC.Web.Api\FitnessApp.IoC.Web.Api.csproj" />
   </ItemGroup>
 
 </Project>
