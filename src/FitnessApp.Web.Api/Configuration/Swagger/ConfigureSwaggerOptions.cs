@@ -13,6 +13,7 @@ namespace FitnessApp.Web.Api.Configuration.Swagger
 		{
 			_apiVersionDescriptionProvider = apiVersionDescriptionProvider;
 		}
+
 		public void Configure(SwaggerGenOptions options)
 		{
 			foreach (var description in _apiVersionDescriptionProvider.ApiVersionDescriptions)
@@ -25,7 +26,7 @@ namespace FitnessApp.Web.Api.Configuration.Swagger
 		{
 			return new OpenApiInfo
 			{
-				Title = $"Car Rent WebApi {description.ApiVersion}",
+				Title = $"Fitness app WebApi {description.ApiVersion}",
 				Version = description.ApiVersion.ToString(),
 			};
 		}

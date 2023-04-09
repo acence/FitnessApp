@@ -4,6 +4,10 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <UserSecretsId>5b38e59f-32dc-4602-a3bc-d85c22a0bc13</UserSecretsId>
+	  <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +27,10 @@
     <ProjectReference Include="..\FitnessApp.Core.Application\FitnessApp.Core.Application.csproj" />
     <ProjectReference Include="..\FitnessApp.Domain\FitnessApp.Domain.csproj" />
     <ProjectReference Include="..\FitnessApp.IoC.Web.Api\FitnessApp.IoC.Web.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Request\" />
   </ItemGroup>
 
 </Project>

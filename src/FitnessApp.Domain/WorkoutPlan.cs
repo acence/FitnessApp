@@ -13,7 +13,7 @@ namespace FitnessApp.Domain
 		#endregion
 
 		#region Parent
-		public User User { get; set; } = null!;
+		public User? User { get; set; } = null!;
         #endregion
     }
 

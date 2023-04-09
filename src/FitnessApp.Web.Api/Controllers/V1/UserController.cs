@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FitnessApp.Web.Api.Controllers
+namespace FitnessApp.Web.Api.Controllers.V1
 {
-	[Route("api/users")]
+	[ApiVersion("1")]
+	[Route("api/v{version:apiVersion}/users")]
 	[ApiController]
 	public class UserController : ControllerBase
 	{

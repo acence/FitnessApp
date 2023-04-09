@@ -27,7 +27,7 @@ namespace Mappings
 			builder
 				.HasMany(x => x.WorkoutDays)
 				.WithOne(x => x.WorkoutPlan)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}
 }

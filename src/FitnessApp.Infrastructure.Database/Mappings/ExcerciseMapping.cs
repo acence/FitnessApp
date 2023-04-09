@@ -28,7 +28,7 @@ namespace Mappings
 				.HasMaxLength(50);
 			builder.HasMany(x => x.WorkoutExcercises)
 				.WithOne(x => x.Excercise)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}
 }
