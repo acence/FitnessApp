@@ -14,9 +14,21 @@ namespace Mappings
 	{
 		public void Configure(EntityTypeBuilder<WorkoutDay> builder)
 		{
-			builder.ToTable("WorkoutDays");
-			builder.HasKey(x => x.Id);
-			builder.Property(x => x.Flags);
+			builder
+				.ToTable("WorkoutDays");
+			builder
+				.HasKey(x => x.Id);
+			builder
+				.Property(x => x.Flags)
+				.IsRequired();
+			builder
+				.HasMany(x => x.Workouts)
+				.WithOne(x => x.WorkoutDay)
+				.OnDelete(DeleteBehavior.Restrict);
+			builder
+				.HasMany(x => x.Excercises)
+				.WithOne(x => x.WorkoutDay)
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}
 }

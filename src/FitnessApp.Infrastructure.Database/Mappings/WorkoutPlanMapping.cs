@@ -14,9 +14,20 @@ namespace Mappings
 	{
 		public void Configure(EntityTypeBuilder<WorkoutPlan> builder)
 		{
-			builder.ToTable("WorkoutPlans");
-			builder.HasKey(x => x.Id);
-			builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
+			builder
+				.ToTable("WorkoutPlans");
+			builder
+				.HasKey(x => x.Id);
+			builder.Property(x => x.Name)
+				.HasMaxLength(100)
+				.IsRequired();
+			builder
+				.Property(x => x.Flags)
+				.IsRequired();
+			builder
+				.HasMany(x => x.WorkoutDays)
+				.WithOne(x => x.WorkoutPlan)
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

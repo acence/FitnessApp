@@ -7,11 +7,11 @@ namespace FitnessApp.Domain.Executions
         public DateTimeOffset Date { get; set; }
 
         #region Children
-        public virtual ICollection<ExcerciseExecution> ExcerciseExecutions { get; set; } = new List<ExcerciseExecution>();
+        public ICollection<ExcerciseExecution> ExcerciseExecutions { get; set; } = new List<ExcerciseExecution>();
         #endregion
 
         #region Parent objects
-        public virtual WorkoutDay WorkoutDay { get; set; } = null!;
+        public WorkoutDay WorkoutDay { get; set; } = null!;
         #endregion
     }
 }

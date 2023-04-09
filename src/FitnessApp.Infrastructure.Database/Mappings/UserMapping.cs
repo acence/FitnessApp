@@ -13,11 +13,27 @@ namespace Mappings
 	{
 		public void Configure(EntityTypeBuilder<User> builder)
 		{
-			builder.ToTable("Users");
-			builder.HasKey(x => x.Id);
-			builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
-			builder.Property(x => x.Email).HasMaxLength(100).IsRequired();
-			builder.Property(x => x.Password).HasMaxLength(500).IsRequired();
+			builder
+				.ToTable("Users");
+			builder
+				.HasKey(x => x.Id);
+			builder
+				.Property(x => x.Name)
+				.HasMaxLength(100)
+				.IsRequired();
+			builder
+				.Property(x => x.Email)
+				.HasMaxLength(100)
+				.IsRequired();
+			builder
+				.Property(x => x.Password)
+				.HasMaxLength(500)
+				.IsRequired();
+			builder
+				.HasMany(x => x.WorkoutPlans)
+				.WithOne(x => x.User)
+				.IsRequired()
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

@@ -14,9 +14,18 @@ namespace Mappings
 	{
 		public void Configure(EntityTypeBuilder<BodyPart> builder)
 		{
-			builder.ToTable("BodyParts");
-			builder.Property(x => x.Name).HasMaxLength(150).IsRequired();
-			builder.Property(x => x.Image).HasMaxLength(50);
+			builder
+				.ToTable("BodyParts");
+			builder
+				.Property(x => x.Name)
+				.HasMaxLength(150)
+				.IsRequired();
+			builder
+				.Property(x => x.Image)
+				.HasMaxLength(50);
+			builder
+				.HasMany(x => x.Excercises)
+				.WithMany(x => x.BodyParts);
 		}
 	}
 }

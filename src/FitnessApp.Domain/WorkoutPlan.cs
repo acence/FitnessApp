@@ -6,13 +6,14 @@ namespace FitnessApp.Domain
     public class WorkoutPlan : BaseModel
     {
         public String Name { get; set; } = null!;
+		public WorkoutPlanFlags Flags { get; set; }
 
         #region Children
-        public virtual ICollection<WorkoutDay> WorkoutDays { get; set; } = new List<WorkoutDay>();
-        #endregion
+        public ICollection<WorkoutDay> WorkoutDays { get; set; } = new List<WorkoutDay>();
+		#endregion
 
-        #region Parent
-        public virtual User User { get; set; } = null!;
+		#region Parent
+		public User User { get; set; } = null!;
         #endregion
     }
 

@@ -14,9 +14,21 @@ namespace Mappings
 	{
 		public void Configure(EntityTypeBuilder<Excercise> builder)
 		{
-			builder.ToTable("Excercises");
-			builder.Property(x => x.Name).HasMaxLength(150).IsRequired();
-			builder.Property(x => x.Image).HasMaxLength(50);
+			builder
+				.ToTable("Excercises");
+			builder
+				.Property(x => x.Name)
+				.HasMaxLength(150)
+				.IsRequired();
+			builder
+				.Property(x => x.Description)
+				.HasMaxLength(1000);
+			builder
+				.Property(x => x.Image)
+				.HasMaxLength(50);
+			builder.HasMany(x => x.WorkoutExcercises)
+				.WithOne(x => x.Excercise)
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

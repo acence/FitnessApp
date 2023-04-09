@@ -9,8 +9,8 @@ namespace FitnessApp.Domain.Executions
         public Int32 Weight { get; set; }
 
         #region Parents
-        public virtual WorkoutDayExecution WorkoutDay { get; set; } = null!;
-        public virtual Excercise Excercise { get; set; } = null!;
+        public WorkoutDayExecution WorkoutDay { get; set; } = null!;
+        public WorkoutExcercise Excercise { get; set; } = null!;
         #endregion
     }
 

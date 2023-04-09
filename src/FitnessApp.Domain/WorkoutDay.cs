@@ -9,12 +9,12 @@ namespace FitnessApp.Domain
         public WorkoutDayFlags Flags { get; set; }
 
         #region Children
-        public virtual ICollection<Excercise> Excercises { get; set; } = new List<Excercise>();
-        public virtual ICollection<WorkoutDayExecution> Workouts { get; set; } = new List<WorkoutDayExecution>();
+        public ICollection<WorkoutExcercise> Excercises { get; set; } = new List<WorkoutExcercise>();
+        public ICollection<WorkoutDayExecution> Workouts { get; set; } = new List<WorkoutDayExecution>();
         #endregion
 
         #region Parent
-        public virtual WorkoutPlan WorkoutPlan { get; set; } = null!;
+        public WorkoutPlan WorkoutPlan { get; set; } = null!;
         #endregion
     }
 

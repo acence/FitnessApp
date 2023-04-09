@@ -1,2 +1,4 @@
 #run in WebApi folder
-dotnet ef migrations add InitialMigration --project ../FitnessApp.Database
+dotnet ef migrations add [MigrationName] --project ../FitnessApp.Infrastructure.Database
+
+dotnet ef database update
