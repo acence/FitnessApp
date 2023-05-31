@@ -13,6 +13,7 @@ namespace FitnessApp.Web.Api.Configuration.Swagger
 		{
 			var pathItem = new OpenApiPathItem();
 			var operation = new OpenApiOperation();
+			operation.Summary = "Checks all dependencies for status";
 			operation.Tags.Add(new OpenApiTag { Name = "HealthCheck" });
 			var properties = new Dictionary<string, OpenApiSchema>
 			{
