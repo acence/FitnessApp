@@ -6,6 +6,7 @@ using FitnessApp.Web.Api.Configuration;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,16 +43,13 @@ if (app.Environment.IsDevelopment())
 	app.UseConfiguredSwagger();
 }
 
-app.MapHealthChecks("/api/health-check", new HealthCheckOptions
-{
-	ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHealthCheck(builder.Configuration);
 
 app.Run();
 
