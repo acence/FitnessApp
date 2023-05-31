@@ -25,9 +25,9 @@ namespace FitnessApp.Web.Api.Configuration.Swagger
 			app.UseSwagger();
 			app.UseSwaggerUI(options =>
 			{
-				foreach (var description in descriptionProvider.ApiVersionDescriptions)
+				foreach (var description in descriptionProvider.ApiVersionDescriptions.Select(x => x.GroupName))
 				{
-					options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"Car Rent WebApi {description.GroupName}");
+					options.SwaggerEndpoint($"/swagger/{description}/swagger.json", $"Car Rent WebApi {description}");
 				}
 			});
 

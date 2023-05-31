@@ -2,6 +2,10 @@ using FitnessApp.Core.Application.Configuration;
 using FitnessApp.Web.Api.Configuration.Swagger;
 using FitnessApp.IoC.Web.Api;
 using System.Text.Json.Serialization;
+using FitnessApp.Web.Api.Configuration;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +32,7 @@ builder.Services.AddVersionedApiExplorer(options =>
 	options.SubstituteApiVersionInUrl = true;
 });
 builder.Services.AddConfiguredSwagger();
+builder.Services.AddHealthCheck(builder.Configuration);
 
 var app = builder.Build();
 
@@ -36,6 +41,11 @@ if (app.Environment.IsDevelopment())
 {
 	app.UseConfiguredSwagger();
 }
+
+app.MapHealthChecks("/api/health-check", new HealthCheckOptions
+{
+	ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.UseHttpsRedirection();
 

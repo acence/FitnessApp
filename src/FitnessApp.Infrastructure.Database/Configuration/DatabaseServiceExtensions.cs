@@ -13,7 +13,7 @@ namespace FitnessApp.Infrastructure.Database.Configuration
 	{
 		public static IServiceCollection AddDatabaseServices(this IServiceCollection services, IConfiguration configuration)
 		{
-			var connectionString = configuration.GetConnectionString("FitnessAppConnectionService");
+			var connectionString = configuration.GetConnectionString("FitnessAppDatabaseConnection");
 
 			services.AddDbContext<IDatabaseContext, DatabaseContext>(options =>
 			{

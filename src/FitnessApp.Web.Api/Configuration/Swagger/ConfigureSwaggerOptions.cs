@@ -19,6 +19,8 @@ namespace FitnessApp.Web.Api.Configuration.Swagger
 			foreach (var description in _apiVersionDescriptionProvider.ApiVersionDescriptions)
 			{
 				options.SwaggerDoc(description.GroupName, CreateInfoForApiVersion(description));
+
+				options.DocumentFilter<HealthCheckFilter>();
 			}
 		}
 
