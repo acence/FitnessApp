@@ -1,5 +1,6 @@
 ﻿using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FitnessApp.Web.Api.Configuration
 {
@@ -7,6 +8,8 @@ namespace FitnessApp.Web.Api.Configuration
 	{
 		public static IServiceCollection AddHealthCheck(this IServiceCollection services, IConfiguration configuration)
 		{
+			services
+				.Configure<Options.HealthCheckOptions>(configuration.GetSection("HealthCheck"));
 			services
 				.AddHealthChecks()
 				.AddSqlServer(configuration["ConnectionStrings:FitnessAppDatabaseConnection"]!, name: "SqlServer");

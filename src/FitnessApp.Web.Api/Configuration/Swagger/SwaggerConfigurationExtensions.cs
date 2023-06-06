@@ -19,7 +19,7 @@ namespace FitnessApp.Web.Api.Configuration.Swagger
 			return services;
 		}
 
-		public static IHost UseConfiguredSwagger(this IHost app)
+		public static WebApplication UseConfiguredSwagger(this WebApplication app)
 		{
 			var descriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 			app.UseSwagger();
